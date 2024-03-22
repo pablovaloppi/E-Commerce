@@ -1,0 +1,108 @@
+ .container{
+    background-color: lightsalmon;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 1fr 1fr;
+    grid-auto-rows: 50px;
+    gap: 4px;
+    /* el minimo que tendria es 300px, si tienen lugar las otras div se pueden agrandar */
+    /* grid-template-columns: minmax(300px, 1fr) 1fr 1fr ; */
+    /* grid-template-rows: repeat(3, 100px); */
+    /* grid-template-rows: 100px 100px 40px 60px; */
+}
+
+.container div:first-child{
+    background-color: lawngreen;
+    border: 2px solid green;
+    /* grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3; */
+    /* grid-column-start: span 1; /* De esta forma hago lo mismo que arriba
+    grid-row-start: span 2; */
+    grid-column: 1/3;
+    grid-row: 2/3 ;
+}
+
+.container div:nth-child(2){
+    background-color: lightseagreen;
+    grid-column: 1/3;
+}
+
+.container div{
+    background-color: lightblue;
+    border: 2px solid #09f;
+    border-radius: 6px;
+}
+body{
+    background-color: #ddd;
+    margin: 0;
+}
+
+.conteiner{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  35px 1fr 100px;
+    min-height: 100vh;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "footer footer footer"
+}
+header{
+    background-color: #09f;
+    grid-area: header;
+}
+aside{
+    background-color: yellow;
+    grid-area: sidebar;
+}
+main{
+    background-color: red;
+    grid-area: main;
+}
+footer{
+    background-color: grey;
+    grid-area: footer;
+}
+
+/* div{
+    display: grid;
+    /* grid-template-columns: 1fr; */
+
+    /* Forma correcta de hacer responsive la grid 
+    Lo que hace es que al menos tenga 200px, si el tamaño es 400px o mas
+    va a poner 2 columnas, y asi sucesivamente
+
+    minmax(tamaño minimo de la columna, tamaño por default)
+    
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(200px, 1fr )
+    );
+     max-width: 650px; /*Tamaño maximo que va a tener el contenedor 
+    margin: auto;/*le da margenes automaticamente de un lado y otro para dejarlo en el centro
+    gap: 16px;
+
+} */
+
+/*
+    forma de hacer responsive el grid, forma vieja
+@media (width > 300px){
+    div{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(width > 600px){
+    div{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+} */
+
+
+img{
+    width: 100%;
+    height: auto;
+}
