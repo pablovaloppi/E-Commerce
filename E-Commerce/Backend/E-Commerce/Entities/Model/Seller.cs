@@ -9,8 +9,9 @@ namespace Entities.Model
     public class Seller
     {
         public  int Id { get; set; }
-        public int SalesQuantity { get; set; }
+        public int SaleQuantity { get; set; }
 
         public IEnumerable<User> Users  { get; set; }
+        public IEnumerable<Sale> Sales { get; set; }
     }
 }

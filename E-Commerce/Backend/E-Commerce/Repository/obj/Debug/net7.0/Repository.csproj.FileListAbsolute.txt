@@ -1,0 +1,17 @@
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Repository.deps.json
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Repository.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Repository.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Entities.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Interfaces.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Entities.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\bin\Debug\net7.0\Interfaces.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.csproj.AssemblyReference.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.AssemblyInfoInputs.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.AssemblyInfo.cs
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.csproj.CopyComplete
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\refint\Repository.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\Repository.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Repository\obj\Debug\net7.0\ref\Repository.dll

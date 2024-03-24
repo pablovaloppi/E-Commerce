@@ -1,0 +1,15 @@
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\bin\Debug\net7.0\Interfaces.deps.json
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\bin\Debug\net7.0\Interfaces.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\bin\Debug\net7.0\Interfaces.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\bin\Debug\net7.0\Entities.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\bin\Debug\net7.0\Entities.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.csproj.AssemblyReference.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.AssemblyInfoInputs.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.AssemblyInfo.cs
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.csproj.CopyComplete
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\refint\Interfaces.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\Interfaces.pdb
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Interfaces\obj\Debug\net7.0\ref\Interfaces.dll

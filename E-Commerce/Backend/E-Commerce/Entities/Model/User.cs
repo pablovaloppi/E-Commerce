@@ -25,5 +25,7 @@ namespace Entities.Model
         public UserType UserType { get; set; }
         public Seller? Seller { get; set; }
 
+        public IEnumerable<Comment> Comments{ get; set; }
+        public IEnumerable<Sale> Sales { get; set; }
     }
 }

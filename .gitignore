@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/Nuevo documento de texto.txt
+/EntityFramework/Proyecto Signal/Frontend/ProyectoSignal
+/.vs
