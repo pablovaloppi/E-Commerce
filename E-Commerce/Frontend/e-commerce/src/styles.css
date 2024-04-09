@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+    --background-principal-color:#f8f9fa;
+    --button-principal-color: #fa5720;
+    --button-secundary-color: #252525;
+    --button-border-principal-color:#ff44009d;
+    --text-principal-color:#30302e;
+    --text-secundary-color:#fa5720;
+    --text-alternative-color:#f0f0f0;
+    --link-principal-color:#fa5720;
+    --link-secundary-color:#262626;
+    --link-hover-principal-color:#262626;
+    --link-hover-secundary-color:#fa5720;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: "Roboto-Regular", sans-serif
+}
+body{
+    display: flex;
+    align-items: center;
+    background-color: var(--background-principal-color);
+
+}
+
+input{
+    height: 40px;
+    padding: 10px;
+    background-color: #efefef;
+    border: 1px solid #00000040;
+    font-size: 1rem;
+}
+input:focus{
+    outline: none;
+    border: 1px solid var(--button-secundary-color);
+}
+
+a{
+    text-decoration: none;
+    color: var(--link-secundary-color);
+    transition: color 0.3s ease-in-out;
+    
+}
+
+a:hover{
+    color: var(--link-hover-secundary-color);
+}
+

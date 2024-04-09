@@ -1,0 +1,25 @@
+<div class="login-container">
+    <div class="main-content">
+        <h1 class="title">
+            My Account
+        </h1>
+        <form  [formGroup]="loginForm" (submit)="onLogin()" action="" class="login-form">
+            <label for="username" class="label-input">Username or email</label>
+            <input type="text" id="username"  formControlName="username">
+            <label for="password" class="label-input">Password</label>
+            <input type="password" name="" id="password" formControlName="password" >
+            <div class="submit-area">
+                <button type="submit" class="button-login">Log in</button>
+                <div class="remember">
+                    <input type="checkbox" name="" id="remember">
+                    <label for="remember"> Remember Me</label>
+                </div>
+            </div>
+            <a href="#">Lost your password?</a>
+        </form>
+    </div>
+
+    <div class="lateral-content">
+
+    </div>
+</div>

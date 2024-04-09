@@ -1,5 +1,7 @@
-﻿using Entities.Model;
-using Interfaces;
+﻿using Entities.Helpers;
+using Entities.Model;
+using Entities.Parameters;
+using Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,16 +24,24 @@ namespace Repository
             Delete(comment );
         }
 
-        public async Task<IEnumerable<Comment>> GetAllAsync() {
-            return await Get().ToListAsync();
+        public async Task<Comment> GetByIdAsync( int id ) {
+            return await FindByCondition( comment => comment.Id == id ).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Comment>> GetAllByProductAsync( int productId ) {
-            return await FindByCondition( comments => comments.ProductId == productId ).ToListAsync();
+        public async Task<PagedList<Comment>> GetAllAsync( CommentParameters parameters) {
+            return await PagedList<Comment>.ToPagedListAsync( Get(), parameters.PageNumber, parameters.PageSize );
         }
 
-        public async Task<IEnumerable<Comment>> GetAllByUserAsync( int userId ) {
-            return await FindByCondition( comments => comments.UserId == userId ).ToListAsync();
+        public async Task<PagedList<Comment>> GetAllByProductAsync( CommentParameters parameters, int productId ) {
+            return await PagedList<Comment>.ToPagedListAsync(
+                FindByCondition( comments => comments.ProductId == productId ),
+               parameters.PageNumber, parameters.PageSize );
+        }
+
+        public async Task<PagedList<Comment>> GetAllByUserAsync( CommentParameters parameters, int userId ) {
+            return await PagedList<Comment>.ToPagedListAsync( 
+                FindByCondition( comments => comments.UserId == userId ),
+                parameters.PageNumber, parameters.PageSize );
         }
 
         public void UpdateComment( Comment comment ) {

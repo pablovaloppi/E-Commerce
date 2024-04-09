@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder( args );
 // Set Path to save logs files
 LogManager.Setup().LoadConfigurationFromFile( string.Concat( Directory.GetCurrentDirectory(), "/nlog.config" ) );
 
+//Configure Cors
+builder.Services.ConfigureCors();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -23,11 +26,21 @@ builder.Services.ConfigureRepositoryWrapper();
 //I.D services entities
 builder.Services.ConfigureServicesEntities();
 
+//Add Automapper
+builder.Services.AddAutoMapper( typeof( Program ) );
+
+//ConfigureJWT
+builder.Services.ConfigureJWT( builder.Configuration );
+
+
 var app = builder.Build();
 
 // Configure ExceptionMiddleware
 app.ConfigureCustomExceptionMiddleware();
 // Configure the HTTP request pipeline.
+
+
+app.UseCors( "CorsPolicy" );
 
 app.UseHttpsRedirection();
 

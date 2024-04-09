@@ -17,3 +17,5 @@ C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\obj
 C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\obj\Debug\net7.0\refint\Services.dll
 C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\obj\Debug\net7.0\Services.pdb
 C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\obj\Debug\net7.0\ref\Services.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\bin\Debug\net7.0\Validators.dll
+C:\Users\54346\Documents\Programacion\E-Commerce\Backend\E-Commerce\Services\bin\Debug\net7.0\Validators.pdb

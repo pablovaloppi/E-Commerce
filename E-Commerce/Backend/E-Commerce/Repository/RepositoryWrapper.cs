@@ -1,5 +1,6 @@
 ﻿using Entities.Model;
 using Interfaces;
+using Interfaces.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

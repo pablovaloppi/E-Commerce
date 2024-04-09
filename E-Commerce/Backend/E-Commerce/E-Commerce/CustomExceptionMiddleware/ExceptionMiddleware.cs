@@ -1,5 +1,5 @@
 ﻿using E_Commerce.Responses;
-using E_Commerce.CustomExceptionMiddleware.CustomExceptions;
+using FluentValidation;
 using Interfaces;
 using System.Net;
 
@@ -36,17 +36,18 @@ namespace E_Commerce.CustomExceptionMiddleware
            var errorDetails = new ErrorDetails();
             switch( exception ) {
                 case ValidationException ex:
-                    errorDetails = GenerateError( HttpStatusCode.BadRequest, "Ha occurido un error en la validacion de los datos" );
+                    errorDetails = GenerateError( HttpStatusCode.BadRequest, ex.Message );
                     break;
 
                 default:
-                    errorDetails = GenerateError( HttpStatusCode.InternalServerError, "Interanl Server Error from the custom middleware." );
+                    errorDetails = GenerateError( HttpStatusCode.InternalServerError, exception.Message );
                     break;
             }
             return errorDetails;
         }
     
         private ErrorDetails GenerateError(HttpStatusCode statusCode, string message) {
+            
             return new ErrorDetails() {
                 StatusCode = (int)statusCode,
                 Message = message

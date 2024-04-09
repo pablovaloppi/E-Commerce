@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce", "E-Commerce\E-Commerce.csproj", "{4A676A2A-E71A-4826-8FCC-0C5AA1453A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Commerce", "E-Commerce\E-Commerce.csproj", "{4A676A2A-E71A-4826-8FCC-0C5AA1453A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{3842EC05-633E-41DC-90EB-7D5E4B814CE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{3842EC05-633E-41DC-90EB-7D5E4B814CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{2A608657-6333-447C-AB14-4155FA903D74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{2A608657-6333-447C-AB14-4155FA903D74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{DB1E1ED2-CE17-4006-8CE5-9C6163AED180}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{DB1E1ED2-CE17-4006-8CE5-9C6163AED180}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{84CCC2F9-5513-4412-BC77-F28676A23BA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{84CCC2F9-5513-4412-BC77-F28676A23BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators", "Validators\Validators.csproj", "{B1D8FB8C-D498-4449-AD6A-3A19AD9D5938}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{84CCC2F9-5513-4412-BC77-F28676A23BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84CCC2F9-5513-4412-BC77-F28676A23BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84CCC2F9-5513-4412-BC77-F28676A23BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D8FB8C-D498-4449-AD6A-3A19AD9D5938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D8FB8C-D498-4449-AD6A-3A19AD9D5938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D8FB8C-D498-4449-AD6A-3A19AD9D5938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D8FB8C-D498-4449-AD6A-3A19AD9D5938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,7 @@
-﻿using Entities.Model;
+﻿using Entities.Helpers;
+using Entities.Model;
+using Entities.Parameters;
+using Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,10 +24,10 @@ namespace Repository
             Delete( category );
         }
 
-        public async Task<IEnumerable<Category>> GetAllAsync() {
-            return await Get().ToListAsync();
+        public async Task<PagedList<Category>> GetAllAsync( CategoryParameters parameters) {
+            
+            return await PagedList<Category>.ToPagedListAsync(Get().OrderBy( c=> c.Name), parameters.PageNumber, parameters.PageSize); 
         }
-
         public async Task<Category> GetByIdAsync( int id ) {
             return await FindByCondition( category => category.Id == id ).FirstOrDefaultAsync();
         }

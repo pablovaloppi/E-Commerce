@@ -1,0 +1,17 @@
+<div class="product-card" >
+    <div class="header">
+        <h3 class="tittle">{{title}}</h3>
+        <h4 class="price"><span>Price </span>{{price | currency}}</h4>
+    </div>
+    <div class="body">
+        <div class="product-image">
+            <img src="{{imageSrc}}" alt="" class="product">
+        </div>
+    </div>
+    <div class="footer">
+        <a routerLink={{leftLinkPath}} class="left-link">{{leftLinkText}}</a>
+        <a routerLink={{rightLinkPath}}  class="right-link">{{rightLinkText}}</a>
+    </div>
+</div> 
+
+<!-- " -->

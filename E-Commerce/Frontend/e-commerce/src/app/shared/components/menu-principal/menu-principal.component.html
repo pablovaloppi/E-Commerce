@@ -1,0 +1,75 @@
+<header class="header">
+  <div class="top-header">
+    <div class="logo">
+      <a href=""><img src="../../../../assets/images/logo.png" alt="" /></a>
+    </div>
+    <div class="search-bar">
+      <input type="text" name="" id="" />
+      <button type="button">Search</button>
+    </div>
+    <div class="top-nav">
+      <ul>
+        <li
+          *ngIf="!(isLogin$ | async)"
+          class="button"
+          routerLink="/login"
+          matTooltip="Login"
+          aria-label="Boton para iniciar sesion"
+        >
+          <i class="fa-solid fa-lock"></i>
+        </li>
+        <li
+          *ngIf="isLogin$ | async"
+          class="button"      
+        >
+          <i class="fa-solid fa-user"></i>
+          <div class="arrow">
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+          <ul class="sub-menu">
+            <li *ngIf="isAdmin"><a href="#">Admin Panel</a></li>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a (click) ="onLogout()">Logout</a></li>
+          </ul>
+        </li>
+        <li
+          class="button"
+          matTooltip="Favorites"
+          aria-label="Boton para ver la lista de productos favoritos"
+        >
+          <i class="fa-solid fa-heart"></i>
+        </li>
+        <li
+          class="button"
+          matTooltip="Cart"
+          aria-label="Boton para abrir carrito de compras"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom-header">
+    <details class="select-category">
+      <summary class="title-category">Category</summary>
+      <ul class="category-list">
+        <a href=""><li>Juguetes</li></a>
+        <a href=""><li>Herramientas y Ferreteria</li></a>
+        <a href=""><li>Juguetes</li></a>
+        <a href=""><li>Juguetes</li></a>
+        <a href=""><li>Juguetes</li></a>
+      </ul>
+    </details>
+    <nav class="principal-navbar">
+      <ul>
+        <a href=""><li class="nav-link">Home</li></a>
+        <a href=""><li class="nav-link">Shop</li></a>
+        <a href=""><li class="nav-link">On Sale</li></a>
+        <a href=""><li class="nav-link">Lastest Blog</li></a>
+        <a href=""><li class="nav-link">Contact Us</li></a>
+      </ul>
+    </nav>
+  </div>
+</header>

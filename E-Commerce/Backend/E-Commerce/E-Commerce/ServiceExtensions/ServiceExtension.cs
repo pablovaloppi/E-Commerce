@@ -1,17 +1,33 @@
 ﻿using E_Commerce.CustomExceptionMiddleware;
 using E_Commerce.Responses;
+using Entities.Helpers;
 using Entities.Model;
+using Entities.Validators;
 using Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Repository;
 using Services;
 using System.Net;
+using System.Text;
 
 namespace E_Commerce.ServiceExtensions
 {
     public static class ServiceExtension
     {
+        public static void ConfigureCors(this IServiceCollection services ) {
+            services.AddCors( options => {
+                options.AddPolicy( "CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithExposedHeaders( "X-Pagination" )
+                    );
+            } );
+        }
         public static void ConfigureDbContext( this IServiceCollection services, IConfiguration configuration ) {
             
             services.AddDbContext<ECommerceDbContext>( options => {
@@ -31,6 +47,28 @@ namespace E_Commerce.ServiceExtensions
 
         public static void ConfigureServicesEntities( this IServiceCollection services ) {
             services.AddScoped<CategoryService>();
+            services.AddScoped<AuthService>();
         }
+
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration ) {
+            services.AddAuthentication( JwtBearerDefaults.AuthenticationScheme ).AddJwtBearer( options => {
+                options.TokenValidationParameters = new TokenValidationParameters {
+                    // Solo permite tokens generados por la dir http del Issuer (dir servidor)
+                    ValidateIssuer = true,
+                    ValidIssuer = configuration.GetSection( "Jwt:Issuer" ).Value,
+                    //---
+                    // Solo admite tokens generados por la dir http de la Audience( dir web)
+                    ValidateAudience = true,
+                    ValidAudience = configuration.GetSection( "Jwt:Audience" ).Value,
+                    //---
+                    ValidateLifetime = true,
+                    // Verifica que la signature de jwt sea la correcta que se genero con la key
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey( Encoding.UTF8.GetBytes( configuration.GetSection( "Jwt:Key" ).Value! ) )
+                    //---
+                };
+            } );
+        }
+
     }
 }

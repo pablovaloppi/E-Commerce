@@ -1,0 +1,160 @@
+ .product-container {
+     display: flex;
+     align-items: start;
+     max-width: 1300px;
+     ;
+     height: max-content;
+     gap: 30px;
+     padding: 20px 20px;
+
+     .image {
+         width: 40%;
+         height: 468px;
+         background-color: red;
+         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.245);
+
+         .product-image {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+     }
+
+     .product-info {
+         width: 60%;
+         /* background-color: aquamarine; */
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+
+         .title {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             padding-bottom: 15px;
+             border-bottom: 3px solid rgba(128, 128, 128, 0.176);
+
+             .favorite {
+                 padding: 10px;
+                 font-size: 0.8rem;
+                 border: 2px solid #80808067;
+                 color: #80808067;
+                 ;
+                 border-radius: 5px;
+             }
+
+             .favorite:hover {
+                 cursor: pointer;
+             }
+         }
+
+         .price {
+             font-size: 1.3rem;
+         }
+
+         .description {
+             font-family: auto;
+         }
+
+         .color-selector {
+             display: flex;
+
+             .color-box {
+                 font-size: 2em;
+                 display: grid;
+                 grid-template-columns: 1em auto;
+                 gap: 0.3em
+             }
+
+             .box-selector-color {
+                 -webkit-appearance: none;
+                 appearance: none;
+                 background-color: #fff;
+                 margin: 0;
+                 font: inherit;
+                 width: 1.15em;
+                 height: 1.15em;
+                 border-radius: 5px;
+                 display: grid;
+                 place-content: center;
+             }
+
+             .box-selector-color:focus {
+                 outline: 2px solid rgba(0, 0, 0, 0.6);
+             }
+             .box-selector-color{
+                cursor: pointer;
+             }
+         }
+
+         .stock {
+             color: rgba(136, 100, 34, 0.73);
+             font-size: 0.9rem;
+         }
+
+         .form-quantity-cart {
+
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             gap: 10px;
+             width: 350px;
+             height: 50px;
+
+             .quantity {
+                 display: grid;
+                 grid-template-columns: repeat(3, 1fr);
+
+                 .text-quantity::-webkit-inner-spin-button {
+                     appearance: none;
+                 }
+
+                 .text-quantity {
+                     text-align: center;
+                     font-weight: 600;
+                     -moz-appearance: textfield;
+                     border: none;
+                     font-size: 1rem;
+                     color: #00000080;
+                     background-color: #efefef;
+                     border-top: 2px solid #00000080;
+                     border-bottom: 2px solid #00000080;
+                 }
+
+                 .text-quantity:focus {
+                     outline: none;
+                 }
+
+                 .minus-add {
+                     display: grid;
+                     place-content: center;
+                     border: none;
+                     font-size: 1.5rem;
+                     background-color: #efefef;
+                     border: 2px solid #00000080;
+                     color: #00000080;
+                 }
+
+                 .minus-add {
+                     cursor: pointer;
+                 }
+
+
+             }
+
+             .add-cart {
+                 font-weight: 600;
+                 padding: 0px 10px;
+                 border: 2px solid var(--button-border-principal-color);
+                 background-color: var(--button-principal-color);
+                 border-radius: 3px;
+                 color: var(--text-alternative-color);
+                 transition: 0.3s background ease-in;
+             }
+
+             .add-cart:hover {
+                 cursor: pointer;
+                 background-color: rgba(255, 68, 0) ;
+             }
+         }
+     }
+ }
