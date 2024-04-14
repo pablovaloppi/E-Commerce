@@ -1,4 +1,6 @@
-﻿using Entities.Model;
+﻿using Entities.Helpers;
+using Entities.Model;
+using Entities.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace Interfaces.Repository
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetAllAsync();
+        Task<PagedList<Product>> GetAllAsync(ProductParameters parameters);
         Task<Product> GetByIdAsync(int id);
         void CreateProduct(Product product);
         void UpdateProduct(Product product);

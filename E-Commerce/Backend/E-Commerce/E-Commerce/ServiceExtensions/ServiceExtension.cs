@@ -13,6 +13,7 @@ using Repository;
 using Services;
 using System.Net;
 using System.Text;
+using Validators;
 
 namespace E_Commerce.ServiceExtensions
 {
@@ -41,13 +42,22 @@ namespace E_Commerce.ServiceExtensions
         public static void ConfigureRepositoryWrapper(this IServiceCollection services ) {
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }    
+
+        public static void ConfigureCustomValidator(this IServiceCollection services ) {
+            // Cuando se requiere una Instancia del typeof ICustomValidator<>
+            // Le devuelvo una instancia del typeof CustomValidator<>
+            services.AddScoped( typeof( ICustomValidator<> ), typeof( CustomValidator<> ) );
+        }
+
         public static void ConfigureCustomExceptionMiddleware( this WebApplication app ) {
             app.UseMiddleware<ExceptionMiddleware>();
         }
 
         public static void ConfigureServicesEntities( this IServiceCollection services ) {
+ 
             services.AddScoped<CategoryService>();
             services.AddScoped<AuthService>();
+            services.AddScoped<ProductService>();
         }
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration ) {

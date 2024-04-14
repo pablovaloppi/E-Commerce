@@ -8,6 +8,8 @@ namespace Interfaces
 {
     public interface ICustomValidator<T>
     {
+        void DefineRules();
+        void SetEntity( T entity );
         bool IsValid();
         string ErrorMessages();
     }

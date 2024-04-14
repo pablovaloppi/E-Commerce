@@ -13,23 +13,23 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class AuthService : BaseService {
+    public class AuthService : BaseService<Auth> {
         private readonly IRepositoryWrapper _repository;
         private readonly ILoggerManager _logger;
         private readonly IConfiguration _configuration;
-        private User user;
+        private User _user;
 
-        public AuthService( IRepositoryWrapper repository, ILoggerManager logger, IConfiguration configuration ) : base( logger ) {
+        public AuthService( IRepositoryWrapper repository, ILoggerManager logger, IConfiguration configuration) : base( logger ) {
             _repository = repository;
             _logger = logger;
             _configuration = configuration;
         }
 
         public async Task<bool> HasLogued( UserLoginDto userLogin ) {
-            user = await _repository.User.GetByUserNameAsync( userLogin.UserName );
-            IsNull( user, $"No se encuentra el usuario: {userLogin.UserName} " );
+            _user = await _repository.User.GetByUserNameAsync( userLogin.UserName );
+            IsNull( _user, $"No se encuentra el usuario: {userLogin.UserName} " );
 
-            if( !VerifyPassword( user, userLogin ) ) {
+            if( !VerifyPassword( _user, userLogin ) ) {
                 _logger.LogError( "El password es incorrecto" );
                 return false;
             }
@@ -39,17 +39,17 @@ namespace Services
         }
 
         public Auth InfoUser() {
-            if( user is null) {
+            if( _user is null) {
                 return null;
             }
-            return new Auth { Id = user.Id, UserName = user.UserName, UserTypeId = user.UserTypeId, Token = GenerateToken() };
+            return new Auth { Id = _user.Id, UserName = _user.UserName, UserTypeId = _user.UserTypeId, Token = GenerateToken() };
         }
 
         private  string GenerateToken() {
             var secretKey = new SymmetricSecurityKey( Encoding.UTF8.GetBytes( _configuration.GetSection( "Jwt:Key" ).Value! ));
             var signinCredentials = new SigningCredentials( secretKey, SecurityAlgorithms.HmacSha256 );
 
-            var userRole =  _repository.User.GetRoleUser(user);
+            var userRole =  _repository.User.GetRoleUser( _user );
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Role, userRole)
             };

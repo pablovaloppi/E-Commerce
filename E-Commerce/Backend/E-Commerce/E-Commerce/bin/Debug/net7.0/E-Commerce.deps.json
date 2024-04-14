@@ -688,6 +688,7 @@
           "Entities": "1.0.0",
           "Interfaces": "1.0.0",
           "NLog.Extensions.Logging": "5.3.8",
+          "Newtonsoft.Json": "13.0.3",
           "Repository": "1.0.0",
           "Validators": "1.0.0"
         },
@@ -697,6 +698,7 @@
       },
       "Validators/1.0.0": {
         "dependencies": {
+          "Entities": "1.0.0",
           "Interfaces": "1.0.0"
         },
         "runtime": {

@@ -21,7 +21,7 @@ namespace Entities.Configuration
 
             builder.Property( category => category.Name )
                 .IsRequired()
-                .HasColumnName( "nvarchar" )
+                .HasColumnName( "name" )
                 .HasMaxLength( 20 );
 
         }

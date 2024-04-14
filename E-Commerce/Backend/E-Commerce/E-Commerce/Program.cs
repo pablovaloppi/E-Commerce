@@ -14,6 +14,8 @@ builder.Services.ConfigureCors();
 
 builder.Services.AddControllers();
 
+
+
 // Configure DbContext
 builder.Services.ConfigureDbContext( builder.Configuration );
 
@@ -22,6 +24,9 @@ builder.Services.ConfigureLoggerService();
 
 // I.D repositoryWrapper
 builder.Services.ConfigureRepositoryWrapper();
+
+// I.D custom validators
+builder.Services.ConfigureCustomValidator();
 
 //I.D services entities
 builder.Services.ConfigureServicesEntities();

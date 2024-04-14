@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Model
 {
-    public class Auth
+    public class Auth : ICustomEntity
     {
         public int Id { get; set; }
         public string UserName { get; set; }

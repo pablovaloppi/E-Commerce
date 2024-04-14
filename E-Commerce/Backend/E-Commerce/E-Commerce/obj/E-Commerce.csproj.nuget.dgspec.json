@@ -344,6 +344,10 @@
             "NLog.Extensions.Logging": {
               "target": "Package",
               "version": "[5.3.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -390,6 +394,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Entities\\Entities.csproj"
+              },
               "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Interfaces\\Interfaces.csproj": {
                 "projectPath": "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Interfaces\\Interfaces.csproj"
               }

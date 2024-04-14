@@ -6,24 +6,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Validators;
 
 namespace Entities.Validators
 {
-    public class CategoryValidator : AbstractValidator<Category>, ICustomValidator<Category>
+    public class CategoryValidator : CustomValidator<Category>
     {
-        Category _category;
-        public CategoryValidator(Category category) {
-            _category = category;
-            RuleFor(x => x.Name).NotEmpty();
+        private const int NAME_MINIMUM_LENGHT = 3;
+        public CategoryValidator() {
+        }
+        public override void DefineRules() {
+            RuleFor( category => category.Name )
+                .NotEmpty().WithMessage("{PropertyName} no puede ser nulo.");
+            RuleFor( category => category.Name )
+                .MinimumLength( NAME_MINIMUM_LENGHT ).WithMessage( "{PropertyName} no puede ser menor a {MinLenght}." );
+            ;
         }
 
-        public string ErrorMessages(  ) {
-            return Validate( _category ).ToString( "/n" );
-        }
-
-        public bool IsValid( ) {
-            return Validate( _category ).IsValid;
-        }
     }
 }
  

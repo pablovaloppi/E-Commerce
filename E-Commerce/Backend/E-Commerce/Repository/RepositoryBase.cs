@@ -36,6 +36,8 @@ namespace Repository
 
         public IQueryable<T> Get() {
             return ECommerceDbContext.Set<T>().AsNoTracking();
-        }       
+        }
+
+       
     }
 }

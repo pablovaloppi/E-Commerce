@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.Dto.Category;
 using Entities.Dto.Comment;
+using Entities.Dto.Products;
 using Entities.Model;
 
 namespace E_Commerce.Shared
@@ -15,6 +16,13 @@ namespace E_Commerce.Shared
             CreateMap<CategoryDto, Category>();
             CreateMap<CategoryCreateDto, Category>();
             CreateMap<CategoryUpdateDto, Category>();
+            #endregion
+
+            #region Product
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
+            CreateMap<ProductCreateDto, Product>();
+            CreateMap<ProductUpdateDto, Product>();
             #endregion
 
             #region Comment 

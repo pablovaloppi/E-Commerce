@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class CommentService : BaseService
+    public class CommentService : BaseService<Comment>
     {
         private readonly IRepositoryWrapper _repository;
         private readonly IMapper _mapper;
         private readonly ILoggerManager _logger;
 
-        public CommentService( IRepositoryWrapper repository, IMapper mapper, ILoggerManager logger ) : base( logger ) {
+        public CommentService( IRepositoryWrapper repository, IMapper mapper, ILoggerManager logger) : base( logger ) {
             _repository = repository;
             _mapper = mapper;
             _logger = logger;
@@ -61,7 +61,7 @@ namespace Services
 
             return _mapper.Map<CommentDto>( comment );
         }
-    
+        
         public async Task Delete(int id ) {
             var comment = await  _repository.Comment.GetByIdAsync( id );
 

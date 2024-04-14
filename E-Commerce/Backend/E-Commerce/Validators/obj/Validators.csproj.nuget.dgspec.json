@@ -162,6 +162,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Entities\\Entities.csproj"
+              },
               "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Interfaces\\Interfaces.csproj": {
                 "projectPath": "C:\\Users\\54346\\Documents\\Programacion\\E-Commerce\\Backend\\E-Commerce\\Interfaces\\Interfaces.csproj"
               }
