@@ -9,6 +9,11 @@ namespace Entities.Model
     public class ShoppingCart
     {
         public int Id { get; set; }
-        
+        public float Total { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
+
+        public IEnumerable<CartItem> CartItems { get; set; }
+
     }
 }

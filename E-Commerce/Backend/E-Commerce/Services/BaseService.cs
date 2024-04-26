@@ -25,13 +25,23 @@ namespace Services
         public BaseService(ILoggerManager logger) {
             _logger = logger;
             // example: ->     Entites.Model.Category  -> category
-            _typeNameEntity = typeof( T ).ToString().Split( "." )[ 2 ].ToLower();
+            if( typeof(T) != typeof( object ) ) {
+                var splited = typeof( T ).ToString().Split( "." );
+                _typeNameEntity = splited[ splited.Length - 1 ].ToLower();
+            }
+              
         }
 
         protected void IsNull( object entity, string message = null ) {
             if( entity is null ) {
                 _logger.LogError( message is null ? "Los datos son nulos." : message );
                 throw new Exception( message is null ? "Los datos son nulos." : message );
+            }
+        }
+        protected void isEmpty( IEnumerable<object> values, string message ) {
+            if( values.Count() == 0 ) {
+                _logger.LogError( message is null ? "No hay nigun dato." : message );
+                throw new Exception( message is null ? "No hay nigun dato." : message );
             }
         }
         protected void SetValidator( ICustomValidator<T> validator ) {

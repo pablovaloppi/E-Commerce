@@ -42,7 +42,7 @@ namespace Services
             if( _user is null) {
                 return null;
             }
-            return new Auth { Id = _user.Id, UserName = _user.UserName, UserTypeId = _user.UserTypeId, Token = GenerateToken() };
+            return new Auth { Id = _user.Id, ShoppingCartId = _user.ShoppingCartId, UserName = _user.UserName, UserTypeId = _user.UserTypeId, Token = GenerateToken() };
         }
 
         private  string GenerateToken() {

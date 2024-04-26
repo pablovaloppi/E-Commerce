@@ -17,8 +17,13 @@ namespace Entities.Configuration
             builder.HasKey( image => image.Id );
 
             builder.Property( image => image.Name )
+                .HasMaxLength( 255 )
                 .HasColumnName( "name" )
-                .HasColumnType( "nvarchar" );
+                .HasColumnType( "nvarchar" );                
+
+            builder.HasOne( image => image.Pruduct )
+                .WithMany( product => product.Images )
+                .HasForeignKey( image => image.ProductId );
         }
     }
 }

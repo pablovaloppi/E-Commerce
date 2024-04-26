@@ -62,6 +62,10 @@ namespace Entities.Configuration
                 .WithMany( seller => seller.Users )
                 .HasForeignKey( user => user.SellerId );
 
+            builder.HasOne( user => user.ShoppingCart )
+                  .WithOne( cart => cart.User )
+                  .HasForeignKey<ShoppingCart>( cart => cart.UserId );
+                   
         }
     }
 }

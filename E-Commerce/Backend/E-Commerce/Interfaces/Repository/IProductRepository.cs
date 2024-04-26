@@ -13,6 +13,7 @@ namespace Interfaces.Repository
     {
         Task<PagedList<Product>> GetAllAsync(ProductParameters parameters);
         Task<Product> GetByIdAsync(int id);
+        Task<Product> GetByTitle( string title );
         void CreateProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(Product product);

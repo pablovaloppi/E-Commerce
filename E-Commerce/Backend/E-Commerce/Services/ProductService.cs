@@ -21,18 +21,22 @@ namespace Services
         private readonly IRepositoryWrapper _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
+        private readonly FileUploadService _fileUploadService;
 
-        public string roles = "Administrador, Moderador, Vendedor";
-        public ProductService(IRepositoryWrapper repository, ILoggerManager logger, IMapper mapper): base(logger) {
+        public ProductService(IRepositoryWrapper repository, ILoggerManager logger, IMapper mapper, FileUploadService fileUploadService): base(logger) {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            _fileUploadService = fileUploadService;
             SetValidator( new ProductValidator() );
         }
 
         public async Task<IEnumerable<ProductDto>> GetProducts(ProductParameters parameters, HttpResponse responseController) {
             var products = await _repository.Product.GetAllAsync(parameters);
 
+            foreach( var product in products ) {
+
+            }
             IsNull( products, "No hay productos en la base de datos" );
 
             _logger.LogInfo( $"Se han obtenido {products.Count()} productos." );
@@ -52,19 +56,29 @@ namespace Services
             return _mapper.Map<ProductDto>( product );
         }
 
-        public async Task<ProductDto> Create(ProductCreateDto productCreate ) {
+        public async Task<ProductDto> Create(ProductCreateDto productCreate, HttpRequest request ) {
             IsNull( productCreate, "Los datos ingresados estan vacios o son incorrectos." );
 
             var product = _mapper.Map<Product>( productCreate );
 
             Validate( product );
-
+     
+            // Creo el producto sin las imagenes
             _repository.Product.CreateProduct( product );
+            await _repository.SaveAsync();
+
+            //Obtengo el producto creado (byTitle)
+            var productCreated = await _repository.Product.GetByTitle( product.Title );
+
+            // Creo las imagenes y las asocio al producto una vez que tengo su id
+            var imagesList = await _fileUploadService.Upload( request );
+
+            productCreated.Images = _repository.Image.CreateImagesProducts( imagesList, productCreated.Id );
             await _repository.SaveAsync();
 
             _logger.LogInfo( $"Se ha creado correctamente la categoria {product.Title}" );
 
-            return _mapper.Map<ProductDto>( product );
+            return _mapper.Map<ProductDto>( productCreated );
         }
       
         public async Task Update(int id, ProductUpdateDto productUpdate ) {

@@ -40,6 +40,9 @@ namespace Entities.Configuration
             builder.HasOne( product => product.Category )
                 .WithMany( category => category.Products )
                 .HasForeignKey( product => product.CategoryId );
+
+
+
         }
     }
 }

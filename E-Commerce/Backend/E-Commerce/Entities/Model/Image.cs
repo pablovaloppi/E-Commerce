@@ -10,7 +10,7 @@ namespace Entities.Model
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-
-        public IEnumerable<ProductImage> PruductsImages { get; set; }
+        public int ProductId { get; set; }
+        public Product Pruduct { get; set; }
     }
 }

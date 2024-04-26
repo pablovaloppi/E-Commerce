@@ -17,7 +17,8 @@ namespace Interfaces
         ISellerRepository Seller { get; }
         IUserRepository User { get; }
         IUserTypeRepository UserType { get; }
-
+        IShoppingCartRepository ShoppingCart { get; }
+        ICartItemRepository CartItem { get; }
         Task SaveAsync();
     }
 }

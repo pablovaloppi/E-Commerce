@@ -58,6 +58,10 @@ namespace E_Commerce.ServiceExtensions
             services.AddScoped<CategoryService>();
             services.AddScoped<AuthService>();
             services.AddScoped<ProductService>();
+            services.AddScoped<FileUploadService>();
+            services.AddScoped<ImageService>();
+            services.AddScoped<CartItemService>();
+            services.AddScoped<ShoppingCartService>();
         }
 
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration ) {

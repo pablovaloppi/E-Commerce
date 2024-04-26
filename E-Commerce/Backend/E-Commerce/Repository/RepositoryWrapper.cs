@@ -20,7 +20,8 @@ namespace Repository
         private ISellerRepository _seller;
         private IUserRepository _user;
         private IUserTypeRepository _userType;
-
+        private IShoppingCartRepository _shoppingCart;
+        private ICartItemRepository _cartItem;
         public RepositoryWrapper( ECommerceDbContext eCommerceDbContext ) {
             _eCommerceDbContext = eCommerceDbContext;
         }
@@ -95,7 +96,22 @@ namespace Repository
                 return _userType;
             }
         }
-
+        public IShoppingCartRepository ShoppingCart {
+            get {
+                if( _shoppingCart is null ) {
+                    _shoppingCart = new ShoppingCartRepository( _eCommerceDbContext );
+                }
+                return _shoppingCart;
+            }
+        }
+        public ICartItemRepository CartItem {
+            get {
+                if( _cartItem is null ) {
+                    _cartItem = new CartItemRepository( _eCommerceDbContext );
+                }
+                return _cartItem;
+            }
+        }
         public async Task SaveAsync() {
             await _eCommerceDbContext.SaveChangesAsync();
         }

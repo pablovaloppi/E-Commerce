@@ -31,7 +31,7 @@ namespace Repository
         }
 
         public IQueryable<T> FindByCondition( System.Linq.Expressions.Expression<Func<T, bool>> expression ) {
-            return ECommerceDbContext.Set<T>().Where( expression ).AsNoTracking();
+            return ECommerceDbContext.Set<T>().Where( expression );//.AsNoTracking();
         }
 
         public IQueryable<T> Get() {

@@ -1,4 +1,6 @@
 ﻿using Entities.Dto.Category;
+using Entities.Dto.Images;
+using Entities.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +20,6 @@ namespace Entities.Dto.Products
         public int CategoryId { get; set; }
 
         public CategoryDto Category { get; set; }
+        public IEnumerable<ImageDto> Images { get; set; }
     }
 }

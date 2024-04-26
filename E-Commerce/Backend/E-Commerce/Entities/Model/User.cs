@@ -21,9 +21,11 @@ namespace Entities.Model
 
         public int UserTypeId { get; set; }
         public int? SellerId { get; set; }
+        public int? ShoppingCartId { get; set; }
 
         public UserType UserType { get; set; }
         public Seller? Seller { get; set; }
+        public ShoppingCart ShoppingCart { get; set; }
 
         public IEnumerable<Comment> Comments{ get; set; }
         public IEnumerable<Sale> Sales { get; set; }

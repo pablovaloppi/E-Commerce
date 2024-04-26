@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Entities.Dto.CartItem;
 using Entities.Dto.Category;
 using Entities.Dto.Comment;
+using Entities.Dto.Images;
 using Entities.Dto.Products;
+using Entities.Dto.ShoppingCart;
 using Entities.Model;
 
 namespace E_Commerce.Shared
@@ -12,15 +15,14 @@ namespace E_Commerce.Shared
 
 
             #region Category
-            CreateMap<Category, CategoryDto>();
-            CreateMap<CategoryDto, Category>();
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            ;
             CreateMap<CategoryCreateDto, Category>();
             CreateMap<CategoryUpdateDto, Category>();
             #endregion
 
             #region Product
-            CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>();
+            CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductCreateDto, Product>();
             CreateMap<ProductUpdateDto, Product>();
             #endregion
@@ -29,6 +31,22 @@ namespace E_Commerce.Shared
             CreateMap<Comment, CommentDto>();
             CreateMap<CommentDto, Comment>();
             CreateMap<CommentCreateDto, Comment>();
+            #endregion
+
+            #region Image
+            CreateMap<Image, ImageDto>().ReverseMap();
+            CreateMap<ImageCreateDto, Image>();
+            CreateMap<ImageUpdateDto, Image>();
+            #endregion
+
+            #region ShoppingCart
+            CreateMap<ShoppingCart, ShoppingCartDto>();
+            CreateMap<ShoppingCartDto, ShoppingCart>();
+            #endregion
+
+            #region CartItem
+            CreateMap<CartItem, CartItemDto>().ReverseMap();
+            CreateMap<CartItemCreationDto, CartItem>();
             #endregion
         }
     }

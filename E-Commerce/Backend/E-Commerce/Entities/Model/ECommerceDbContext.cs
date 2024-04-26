@@ -18,12 +18,13 @@ namespace Entities.Model
         public DbSet<Comment> Comments { get; set; } = null!;
         public DbSet<Image> Images { get; set; } = null!;
         public DbSet<Product> Products { get; set; } = null!;
-        public DbSet<ProductImage> ProductsImages { get; set; } = null!;
         public DbSet<ProductSale> ProductsSales { get; set; } = null!;
         public DbSet<Sale> Sales { get; set; } = null!;
         public DbSet<Seller> Sellers { get; set; } = null!;
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<UserType> UsersTypes { get; set; } = null!;
+        public DbSet<CartItem> CartItems { get; set; } = null!;
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; } = null!;
 
         protected override void OnModelCreating( ModelBuilder modelBuilder ) {
             base.OnModelCreating( modelBuilder );

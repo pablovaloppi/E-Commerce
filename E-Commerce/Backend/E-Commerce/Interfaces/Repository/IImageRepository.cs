@@ -11,7 +11,9 @@ namespace Interfaces.Repository
     {
         Task<IEnumerable<Image>> GetAllAsync();
         Task<Image> GetByIdAsync(int id);
+        Task<IEnumerable<Image>> GetAllByIdProductAsync( int productId );
         void CreateImage(Image image);
+        IEnumerable<Image> CreateImagesProducts(IEnumerable<string> imagesName, int productId);
         void UpdateImage(Image image);
         void DeleteImage(Image image);
     }

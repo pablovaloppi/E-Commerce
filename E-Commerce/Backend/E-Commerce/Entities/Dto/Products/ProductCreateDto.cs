@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Dto.Images;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,5 @@ namespace Entities.Dto.Products
         public float Price { get; set; }
         public int Amount { get; set; }
         public int CategoryId { get; set; }
-
     }
 }

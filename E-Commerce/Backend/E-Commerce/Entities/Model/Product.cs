@@ -16,13 +16,11 @@ namespace Entities.Model
         public int Amount { get; set; }
 
         public int CategoryId { get; set; }
-
         public Category Category { get; set; }
 
+        public IEnumerable<CartItem> CartItems { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
-        public IEnumerable<ProductImage> PruductsImages { get; set; }
+        public IEnumerable<Image> Images { get; set; }
         public IEnumerable<ProductSale> ProductsSales { get; set; }
-
-
     }
 }

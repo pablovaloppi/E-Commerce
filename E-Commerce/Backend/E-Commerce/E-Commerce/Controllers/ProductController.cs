@@ -36,10 +36,10 @@ namespace E_Commerce.Controllers
 
         //TODO: Clase heredada de AuthorizeAttribute, IAsyncAuthorizationFilter para poder crear roles personalizados
         // Leidos desde un archivo json o de la db y poder usar algo parecido a [AdministratorAuthorize], [SellerAuthorize]
-        [Authorize(Roles = "Administrador, Moderador, Seller")] 
+        //[Authorize(Roles = "Administrador, Moderador, Seller")] 
         [HttpPost]
-        public async Task<IActionResult> Create( [FromBody]ProductCreateDto product ) {
-           var result = await _productService.Create( product );
+        public async Task<IActionResult> Create( [FromForm]ProductCreateDto product ) {
+           var result = await _productService.Create( product, Request );
             return Ok( _productService.ResponseCreate(result) );
         }
 
