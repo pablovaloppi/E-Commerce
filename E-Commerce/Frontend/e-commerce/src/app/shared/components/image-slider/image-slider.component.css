@@ -1,0 +1,35 @@
+.image-slider-container{
+    width: 100%;
+    position: relative;
+    .content-image{
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+        .slider{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .right-arrow, .left-arrow{
+        font-size: 2rem;
+        color: rgba(0, 0, 0, 0.428);
+
+    }
+
+    .right-arrow:hover, .left-arrow:hover{
+        cursor: pointer;
+    }
+
+    .right-arrow{
+        position: absolute;
+        top:50%;
+        right: 10px;
+    }
+    .left-arrow{
+        position: absolute;
+        top:50%;
+        left: 10px;
+    }
+}
+

@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Responses;
 using Entities.Dto.CartItem;
+using Entities.Dto.ShoppingCart;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -41,5 +42,14 @@ namespace E_Commerce.Controllers
 
             return Ok( new Response() { StatusCode = 200, Message = "Se ha eliminado el item del cart correctamente.", Data = shoppoingCart} );
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateShopCart( [FromBody] ShoppingCartUpdateDto shoppingCart ) {
+            
+            await _shoppingCartService.UpdateShoppingCart( shoppingCart );
+
+            return Ok( _shoppingCartService.ResponseUpdate(shoppingCart.Id)  );
+        }
+
     }
 }

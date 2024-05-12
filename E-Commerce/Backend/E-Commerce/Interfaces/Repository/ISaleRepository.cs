@@ -11,6 +11,7 @@ namespace Interfaces.Repository
     {
         Task<IEnumerable<Sale>> GetAllAsync();
         Task<Sale> GetByIdAsync(int id);
+        Task<Sale> GetLastByUserIdAsync( int id );
         void CreateSale(Sale sale);
         void UpdateSale(Sale sale);
         void DeleteSale(Sale sale);

@@ -1,0 +1,106 @@
+.payment-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    .nav-payment{
+        display: flex;
+        width: 600px;
+        justify-content: space-around;
+
+        .tabs{
+            height: 100%;
+            border-bottom: 3px solid var(--background-principal-color);
+            transition: border-color 0.3s ease;
+            .select{
+                margin:0;
+                padding: 5px 10px;
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+        }
+        .tabs-active{
+            border-bottom: 3px solid var(--button-principal-color);
+            color: var(--button-principal-color);
+        }
+        .tabs:hover{
+            border-bottom: 3px solid var(--button-principal-color);
+            cursor: pointer;
+            color: var(--button-principal-color);
+        }
+    }
+
+    .creditcard{
+        width: 80%;
+        form{
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+
+            .creditcard-selector{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                padding: 10px;
+                .creditcard-tab{
+                    position: relative;
+                    width: 80px;
+                    height: 50px;
+                    background-color: red;
+                    overflow: hidden;
+
+                    .selector{
+                        position: absolute;
+                        background-color: transparent;
+                        appearance: none;
+                        width: 100%;
+                        height: 100%;
+                                              
+                    }
+                    .selector:focus{
+                        border: 2px solid var(--text-principal-color);
+                    }
+                    .selector:checked{
+                        border: 2px solid var(--text-principal-color);
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                   
+                }
+                .creditcard-tab:hover{
+                    cursor: pointer;       
+                }              
+            }
+            .input-content{
+                width: 60%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .buttons{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+                padding: 10px;
+
+                button:disabled{
+                    background-color: #efefef;
+                    border-color: #e2d6d6;
+                }
+            }
+            
+        }
+
+    }
+
+}

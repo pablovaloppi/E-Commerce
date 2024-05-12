@@ -16,6 +16,7 @@ namespace Interfaces.Repository
         Task<Product> GetByTitle( string title );
         void CreateProduct(Product product);
         void UpdateProduct(Product product);
+        void UpdateProductRange( IEnumerable<Product> products );
         void DeleteProduct(Product product);
     }
 }

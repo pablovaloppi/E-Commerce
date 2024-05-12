@@ -5,6 +5,7 @@ using Entities.Dto.Comment;
 using Entities.Dto.Images;
 using Entities.Dto.Products;
 using Entities.Dto.ShoppingCart;
+using Entities.Dto.User;
 using Entities.Model;
 
 namespace E_Commerce.Shared
@@ -40,13 +41,19 @@ namespace E_Commerce.Shared
             #endregion
 
             #region ShoppingCart
-            CreateMap<ShoppingCart, ShoppingCartDto>();
-            CreateMap<ShoppingCartDto, ShoppingCart>();
+            CreateMap<ShoppingCart, ShoppingCartDto>().ReverseMap();
+            CreateMap<ShoppingCartUpdateDto, ShoppingCart>();
             #endregion
 
             #region CartItem
             CreateMap<CartItem, CartItemDto>().ReverseMap();
             CreateMap<CartItemCreationDto, CartItem>();
+            CreateMap<CartItemUpdateDto, CartItem>();
+            #endregion
+
+            #region User
+            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<UserCreationDto, User>();
             #endregion
         }
     }

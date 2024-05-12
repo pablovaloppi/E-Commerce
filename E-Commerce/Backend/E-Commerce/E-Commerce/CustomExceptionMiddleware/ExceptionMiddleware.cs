@@ -39,6 +39,9 @@ namespace E_Commerce.CustomExceptionMiddleware
                     errorDetails = GenerateError( HttpStatusCode.BadRequest, ex.Message );
                     break;
 
+                case ArgumentOutOfRangeException ex:
+                    errorDetails = GenerateError( HttpStatusCode.BadRequest, ex.Message );
+                    break;
                 default:
                     errorDetails = GenerateError( HttpStatusCode.InternalServerError, exception.Message );
                     break;

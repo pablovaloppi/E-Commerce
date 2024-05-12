@@ -27,7 +27,7 @@
             <i class="fa-solid fa-caret-down"></i>
           </div>
           <ul class="sub-menu">
-            <li *ngIf="isAdmin"><a href="#">Admin Panel</a></li>
+            <li *ngIf="isAdmin$ | async"><a href="#">Admin Panel</a></li>
             <li><a href="#">Link 1</a></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
@@ -42,11 +42,13 @@
           <i class="fa-solid fa-heart"></i>
         </li>
         <li
+          (click)="onShoppingCart()"
           class="button"
           matTooltip="Cart"
           aria-label="Boton para abrir carrito de compras"
         >
           <i class="fa-solid fa-cart-shopping"></i>
+          <div class="indicator-items" *ngIf="areItems$ | async">{{quantityItemInCart$ | async}}</div>
         </li>
       </ul>
     </div>
@@ -64,8 +66,8 @@
     </details>
     <nav class="principal-navbar">
       <ul>
-        <a href=""><li class="nav-link">Home</li></a>
-        <a href=""><li class="nav-link">Shop</li></a>
+        <a href="" ><li class="nav-link">Home</li></a>
+        <a routerLink="/shop"><li class="nav-link">Shop</li></a>
         <a href=""><li class="nav-link">On Sale</li></a>
         <a href=""><li class="nav-link">Lastest Blog</li></a>
         <a href=""><li class="nav-link">Contact Us</li></a>

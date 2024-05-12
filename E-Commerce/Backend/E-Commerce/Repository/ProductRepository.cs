@@ -22,7 +22,7 @@ namespace Repository
             Create( product );
         }
         public Task<Product> GetByTitle( string title ) {
-            return FindByCondition( product => product.Title == title ).FirstOrDefaultAsync();
+            return FindByCondition( product => product.Title == title ).AsNoTracking().FirstOrDefaultAsync();
         }
 
         public void DeleteProduct( Product product ) {
@@ -39,14 +39,18 @@ namespace Repository
         }
 
         public async Task<Product> GetByIdAsync( int id ) {
-            var result = await _eCommerceDbContext.Products.
-                Include( product => product.Images ).
+            var result = await _eCommerceDbContext.Products.AsNoTracking()
+                .Include( product => product.Images ).
                 Where( product => product.Id == id ).FirstOrDefaultAsync();
             return result;
         }
 
         public void UpdateProduct( Product product ) {
             Update( product );
+        }
+
+        public void UpdateProductRange( IEnumerable<Product> products ) {
+            UpdateRange( products );
         }
     }
 }

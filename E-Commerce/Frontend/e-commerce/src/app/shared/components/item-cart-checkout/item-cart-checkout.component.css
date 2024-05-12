@@ -1,0 +1,22 @@
+ .item-cart-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    gap: 10px;
+    border-bottom:  1px solid #80808033;
+    padding: 16px;
+    p{
+        font-size: 0.8rem;
+    }
+    .image-product{
+        width: 100px;
+        height: 100px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit:contain;
+        }
+    }
+    
+ }

@@ -1,0 +1,8 @@
+.shop-container{
+    width: 90vw;
+    padding: 20px;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}

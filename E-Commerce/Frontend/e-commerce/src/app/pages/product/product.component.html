@@ -1,16 +1,16 @@
-<section class="product-container">
+<section *ngIf="product" class="product-container">
     <div class="image">
         <img class="product-image" src="../../../assets/images/headphone.png" alt="">
     </div>
     <div class="product-info">
         <div class="title">
-            <h1 class="product-title">Auriculares Logitech G432 7.1 Wired Gaming Haedset PC</h1>
+            <h1 class="product-title">{{product.title}}</h1>
             <button type="button" class="favorite"><i class="fa-solid fa-heart"></i></button>
         </div>
 
-        <span class="price">£65.00 – £86.00</span>
+        <span class="price">{{product.price | currency}}</span>
         <p class="description">
-            Audífono:
+            <!-- Audífono:
             Transductor: 50 mm
             Respuesta de frecuencia: 20Hz-20KHz
             Impedancia: 39 ohmios (pasiva), 5 kilohmios (activa)
@@ -34,7 +34,8 @@
             Longitud del cable: 2 m
 
             Garantía: Oficial Logitech 12 Meses / 0800-555-3284 o support.logitech.com
-            Web Oficial: Clic Aquí
+            Web Oficial: Clic Aquí -->
+            {{product.description}}
         </p>
         <div class="color-selector">
             <label class="color-box">
@@ -49,14 +50,13 @@
             </label>
         </div>
 
-        <span class="stock"> 5 in stock</span>
+        <span class="stock"> {{product.amount}} in stock</span>
         <form class="form-quantity-cart">
-            <div class="quantity">
-                <button type="button" class="minus-add">-</button>
-                <input class="text-quantity" type="number" min="0" max="5" value="1">
-                <button type="button" class="minus-add">+</button>
-            </div>
-            <button type="submit" class="add-cart"> ADD TO CART</button>
+            <app-quantity-buttons
+            [itemId]="product.id"
+            [stockAmount]="product!.amount"
+            ></app-quantity-buttons>
+            <button (click)="onAddToCart()" type="button" class="add-cart"> ADD TO CART</button>
         </form>
 
         <div class="tab-more-info">

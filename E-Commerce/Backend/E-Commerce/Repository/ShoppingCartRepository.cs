@@ -19,15 +19,19 @@ namespace Repository
         }
 
         public async Task<ShoppingCart> GetShoppingCartByIdAsync( int id ) {
-            return await FindByCondition( cart => cart.Id == id ).Include( cart => cart.CartItems ).ThenInclude(cartItem => cartItem.Product).FirstOrDefaultAsync();
+            return await FindByCondition( cart => cart.Id == id )
+                .Include( cart => cart.CartItems )
+                .ThenInclude(cartItem => cartItem.Product)
+                .ThenInclude(product => product.Images).FirstOrDefaultAsync();
         }
 
         public async Task<ShoppingCart> GetShoppingCartByUserAsync( int id ) {
-            return await FindByCondition( cart => cart.UserId == id ).Include( cart => cart.CartItems).FirstOrDefaultAsync(); //.Include( cart => cart.CartItems )
+            return await FindByCondition( cart => cart.UserId == id ).AsNoTracking().Include( cart => cart.CartItems).FirstOrDefaultAsync(); //.Include( cart => cart.CartItems )
         }
 
         public void UpdateShopCart( ShoppingCart shoppingCart ) {
             Update( shoppingCart );
+            
         }
     }
 }

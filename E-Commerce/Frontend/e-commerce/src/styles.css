@@ -30,6 +30,7 @@ body{
 
 input{
     height: 40px;
+
     padding: 10px;
     background-color: #efefef;
     border: 1px solid #00000040;
@@ -51,3 +52,36 @@ a:hover{
     color: var(--link-hover-secundary-color);
 }
 
+.button{
+        padding: 5px 10px;
+        color: var(--text-alternative-color);
+        font-size: 1rem;
+        background-color: var(--text-principal-color);
+        border-radius: 5px;
+        margin-left: 5px;
+        position: relative;
+        transition: transform 0.3s ease;
+        border-color: black;
+
+}
+.button:hover, .button-principal:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.button-principal{
+    padding: 5px 10px;
+    color: var(--button-secundary-color);
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: var(--button-principal-color);
+    border-radius: 5px;
+    margin-left: 5px;
+    position: relative;
+    transition: transform 0.3s ease;
+    border-color: var(--button-border-principal-color);
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+  }

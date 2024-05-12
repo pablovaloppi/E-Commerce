@@ -26,6 +26,10 @@ namespace Repository
             return await Get().ToListAsync();
         }
 
+        public async Task<Sale> GetLastByUserIdAsync( int id ) {
+            return await FindByCondition( sale => sale.UserId == id ).OrderByDescending(sale => sale.SaleDate).FirstOrDefaultAsync();
+        }
+
         public async Task<Sale> GetByIdAsync( int id ) {
             return await FindByCondition( sale => sale.Id == id ).FirstOrDefaultAsync();
         }

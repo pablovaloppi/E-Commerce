@@ -1,0 +1,69 @@
+<div class="payment-container">
+    <div class="nav-payment">
+        <div class="tabs" [ngClass]="{'tabs-active':isCreditCardPayment}" (click)="onChangeStatePayment(1)">
+            <p class="select">Tarjeta de credito</p>
+        </div>
+        <div class="tabs" [ngClass]="{'tabs-active':isMercadoPagoPayment}" (click)="onChangeStatePayment(2)">
+            <p class="select">MercadoPago</p>
+        </div>
+        <div class="tabs" [ngClass]="{'tabs-active':isTrasferPayment}" (click)="onChangeStatePayment(3)">
+            <p class="select">Transferencia</p>
+        </div>
+    </div>
+
+    <div class="creditcard" *ngIf="isCreditCardPayment">
+        <form [formGroup]="formPayement" (submit)="onSubmitPayment()">
+            <div class="creditcard-selector">
+                <div class="creditcard-tab">
+                    <input class="selector" value="mastercard" type="radio" name="cardType" formControlName="cardType" >
+                    <img src="../../../../assets/images/mastercard.jpg" alt="">
+                </div>
+                <div class="creditcard-tab">
+                    <input class="selector" value="visa" type="radio" name="cardType" formControlName="cardType" >
+                    <img src="../../../../assets/images/visa.jpg" alt="">
+                </div>
+            </div> 
+            <div class="input-content">      
+                <label for="number-creditcard" class="label-input">Numero de tarjeta</label>
+                <input type="number" id="number-creditcard" [maxCharacter]="19" formControlName="numberCreditcard"/>
+            </div>
+            <div class="input-content">
+                <label for="safecode-creditcard" class="label-input">Codigo de seguridad</label>
+                <input type="number" id="safecode-creditcard"[maxCharacter]="4" formControlName="safeCode" />
+            </div>
+            <div class="input-content">
+                <label for="monthd" class="label-input">Mes de vencimiento</label>
+                <input type="number" id="month" [less]="12" [maxCharacter]="2" formControlName="month" />
+            </div>
+            <div class="input-content">
+                <label for="year" class="label-input">Año de vencimiento</label>
+                <input type="number" id="year" [maxCharacter]="2" formControlName="year" />
+            </div>
+            <div class="input-content">
+                <label for="titular-name" class="label-input" >Nombre del titular</label>
+                <input type="text" id="titular-name" onlyLetter [maxCharacter]="16" formControlName="titularName" />
+            </div>
+            <div class="input-content">
+                <label for="dni" class="label-input">Dni</label>
+                <input type="number" id="dni" [maxCharacter]="11" formControlName="dni" />
+            </div>
+            
+            <div class="buttons">
+                <button class="button" type="button">Atras</button>
+                <button class="button-principal" type="submit" [disabled]="!formPayement.valid">Confirmar</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+    
+
+<!-- Tarjeta debito/credito --> 
+    <!-- Datos tarjeta credito -->
+<!-- MercadoPago -->
+<!-- Uala -->
+<!-- Transferencia -->
+    <!-- Datos para transferir -->
+    <!-- Imagen con comprobante -->
+<!-- Efectivo / acuerdo con el vendedor -->

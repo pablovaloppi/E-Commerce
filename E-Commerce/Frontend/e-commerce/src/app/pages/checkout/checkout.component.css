@@ -1,0 +1,80 @@
+.shipment-container {
+  width: 90vw;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 20px;
+  .body-checkout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .content {
+        display: flex;
+        justify-content: center;
+      .checkout-state {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        position: relative;
+        padding: 20px 0px;
+
+        .state {
+          background-color: var(--background-principal-color);
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 1px solid var(--text-principal-color);
+          color: var(--text-principal-color);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          
+        }
+        .line-union {
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          background-color: var(--text-principal-color);
+        }
+
+        .line-shipping{
+          position: absolute;
+          width: 50%;
+          height: 1px;
+          background-color: var(--button-border-principal-color);
+        }
+
+        .line-payment{
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          background-color: var(--button-border-principal-color);
+        }
+        .active{
+          transform: scale(1.4);
+          color: var(--button-border-principal-color);
+          border-color: var(--button-border-principal-color);
+          
+        }
+        .active-small{
+          color: var(--button-border-principal-color);
+          border-color: var(--button-border-principal-color);
+        }
+
+        .active-small:hover{
+          cursor: pointer;
+          transform: scale(1.1);
+          color: var(--button-principal-color);
+          border-color: var(--button-principal-color);
+        }
+      }
+    }
+  }
+  .cart-checkout {
+    padding-top: 20px;
+  }
+}
+ 

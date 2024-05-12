@@ -1,0 +1,33 @@
+<div class="cart-container">
+  <div class="header">
+    <i (click)="onCloseCart()" class="fa-solid fa-xmark"></i>
+  </div>
+  <ng-container *ngIf="shopCartView">
+    <div *ngIf="shopCartView" class="body">
+      <div class="title-cart">
+        <h3>PRODUCTO</h3>
+        <h3>SUBTOTAL</h3>
+      </div>
+      <app-item-cart
+        *ngFor="let item of shopCartView.cartItems; index as i"
+        [price]="item.totalPrice"
+        [title]="item.product.title"
+        [imagenScr]="item.product.images"
+        [itemId]="item.id"
+        [itemPosition]="i"
+        (clickDelete)="onDeleteItem($event)"
+        (changePrice)="onChangePrice($event)"
+      ></app-item-cart>
+    </div>
+    <div class="footer">
+      <div class="subtotal">
+        <p>Subtotal (sin envío): {{ shopCartView.total | currency }}</p>
+        <h1>Total: {{ shopCartView.total | currency }}</h1>
+      </div>
+      <div class="buy">
+        <button (click)="onCloseCart()" routerLink="/checkout">INICIAR COMPRA</button>
+      </div>
+      <div class="view-more"><a href="#">Ver mas productos</a></div>
+    </div>
+  </ng-container>
+</div>

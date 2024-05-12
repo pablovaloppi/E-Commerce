@@ -1,0 +1,32 @@
+<div class="shipment-container">
+  <div class="body-checkout">
+    <div class="content">
+      <div class="checkout-state">
+        <div class="state active-small">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div 
+         class="state"
+         (click)="onBackShipping()"
+          [ngClass]="{'active':isInShippig, 'active-small': isInPayment}">
+          <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <div class="state" [ngClass]="{'active':isInPayment}">
+          <i class="fa-regular fa-credit-card"></i>
+        </div>
+        <span [ngClass]="{'line-shipping':isInShippig, 'line-payment':isInPayment}"></span>
+      </div>
+    </div>
+    <app-shipping-method *ngIf="isInShippig"
+        (shippingOk)="onGetShipping($event)"
+        [shippingValues]="shippingMethod"  
+    > </app-shipping-method>
+    <app-payment-method *ngIf="isInPayment">
+            
+        </app-payment-method>
+  </div>
+
+  <div class="cart-checkout">
+    <app-cart-checkout></app-cart-checkout>
+  </div>
+</div> 

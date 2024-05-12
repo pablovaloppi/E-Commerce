@@ -1,0 +1,172 @@
+<div class="shipping-container">
+  <div class="form-shipping">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel
+        (opened)="onDisableWithdraw()"
+        (afterCollapse)="onEnableWithdraw()"
+        [disabled]="disableShinpping"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Envio a domicilio standard </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="formShipping" (submit)="onShipping(1)">
+          <div class="shipping-selector">
+            <div
+              class="shipping-cards"
+              *ngFor="let shipping of shippingMethods"
+              (click)="onSelectShipping(shipping.id)"
+            >
+              <img src="{{ shipping.image }}" alt="" />
+            </div>
+          </div>
+          <div class="shipping-standard">
+            <div class="name">
+              <label for="name" class="label-input">Nombre y Apellido</label>
+              <input type="text" id="name" formControlName="name" />
+            </div>
+
+            <div class="province">
+              <select name="" id="">
+                <option value="" default>Seleccione la provincia</option>
+              </select>
+            </div>
+
+            <div class="city">
+              <label for="city" class="label-input">Ciudad</label>
+              <input type="text" id="city" formControlName="city" />
+            </div>
+            <div class="zip-code">
+              <label for="zipCode" class="label-input">Codigo Postal</label>
+              <input type="number" id="zipCode" formControlName="zipCode" />
+            </div>
+
+            <div class="email">
+              <label for="email" class="label-input">Email</label>
+              <input type="email" id="email" formControlName="email" />
+            </div>
+
+            <div class="street-name">
+              <label for="streetName" class="label-input">Direccion</label>
+              <input
+                class="street"
+                type="text"
+                id="streetName"
+                placeholder="Nombre de calle"
+                formControlName="streetName"
+              />
+              <input
+                class="number-street"
+                type="number"
+                id="address_number"
+                placeholder="Altura"
+                formControlName="streetNumber"
+              />
+            </div>
+            <div class="floor">
+              <label for="floor" class="label-input">Piso</label>
+              <input type="text" id="floor" formControlName="floor" />
+            </div>
+
+            <div class="department">
+              <label for="department" class="label-input">Departamento</label>
+              <input type="text" id="department" formControlName="department" />
+            </div>
+
+            <div class="area-code">
+              <label for="areaCodeCellphone" class="label-input"
+                >Codigo de Area</label
+              >
+              <input
+                type="number"
+                id="email"
+                formControlName="areaCodeCellPhone"
+              />
+            </div>
+
+            <div class="phone-number">
+              <label for="phoneNumber" class="label-input"
+                >Numero de contacto</label
+              >
+              <input type="number" id="email" formControlName="phoneNumber" />
+            </div>
+
+            <div class="observation">
+              <label for="observation" class="label-input">Observaciones</label>
+              <textarea
+                formControlName="observation"
+                id="observation"
+                placeholder=" Observasiones"
+                rows="4"
+                cols="40"
+                re
+              ></textarea>
+            </div>
+          </div>
+
+          <mat-action-row>
+            <button type="button" class="button" (click)="onOpenSaleCheck()">
+              Facturar
+            </button>
+            <button type="submit" class="button">Continuar</button>
+          </mat-action-row>
+        </form>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel
+        (opened)="onDisableShipping()"
+        (afterCollapse)="onEnableShiping()"
+        [disabled]="disableWithdraw"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Retiro en sucursal </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="formWithdraw" (submit)="onShipping(2)">
+        <div class="withdraw">
+          <div class="name">
+            <label for="name" class="label-input">Nombre y Apellido</label>
+            <input type="text" id="name" formControlName="name" />
+          </div>
+          <div class="dni">
+            <label for="dni" class="label-input">Dni</label>
+            <input type="number" id="dni" formControlName="dni" />
+          </div>
+        </div>
+
+        <mat-action-row>
+          <button type="button" class="button" (click)="onOpenSaleCheck()">
+            Facturar
+          </button>
+          <button type="submit" class="button">Continuar</button>
+        </mat-action-row>
+      </form>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel
+        [expanded]="expandSaleCheck"
+        (afterCollapse)="expandSaleCheck = false"
+        hideToggle
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Desea facturar la compra? </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="formSaleCheck" (submit)="onShipping(3)">
+        <div class="sale-check">
+          <div class="name">
+            <label for="name" class="label-input">Nombre y Apellido</label>
+            <input type="text" id="name" formControlName="name" />
+          </div>
+          <div class="cuit">
+            <label for="cuit" class="label-input">Cuit/Cuil</label>
+            <input type="number" id="cuit" formControlName="cuit" />
+          </div>
+        </div>
+        <mat-action-row>
+          <button type="submit" class="button">Continuar</button>
+        </mat-action-row>
+      </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

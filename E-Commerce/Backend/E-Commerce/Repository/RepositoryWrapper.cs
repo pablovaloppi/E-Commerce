@@ -1,6 +1,7 @@
 ﻿using Entities.Model;
 using Interfaces;
 using Interfaces.Repository;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,15 @@ namespace Repository
         private ICommentRepository _comment;
         private IImageRepository _image;
         private IProductRepository _product;
+        private IProductSaleRepository _productSale;
         private ISaleRepository _sale;
         private ISellerRepository _seller;
         private IUserRepository _user;
         private IUserTypeRepository _userType;
         private IShoppingCartRepository _shoppingCart;
         private ICartItemRepository _cartItem;
+
+        private IDbContextTransaction _transaction;
         public RepositoryWrapper( ECommerceDbContext eCommerceDbContext ) {
             _eCommerceDbContext = eCommerceDbContext;
         }
@@ -59,6 +63,14 @@ namespace Repository
                     _product = new ProductRepository( _eCommerceDbContext );
                 }
                 return _product;
+            }
+        }
+        public IProductSaleRepository ProductSale {
+            get {
+                if( _productSale is null ) {
+                    _productSale = new ProductSaleRepository( _eCommerceDbContext );
+                }
+                return _productSale;
             }
         }
 
@@ -114,6 +126,14 @@ namespace Repository
         }
         public async Task SaveAsync() {
             await _eCommerceDbContext.SaveChangesAsync();
+        }
+
+        public async Task SetTransaction() {
+            _transaction = await _eCommerceDbContext.Database.BeginTransactionAsync();
+        }
+
+        public async Task CommitTransaction() {
+            _transaction.CommitAsync();
         }
     }
 }

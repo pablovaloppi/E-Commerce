@@ -34,6 +34,7 @@
         background-color: var(--text-principal-color);
         border-radius: 5px;
         margin-left: 5px;
+        position: relative;
       }
       button:hover {
         cursor: pointer;
@@ -55,7 +56,19 @@
           align-items: center;
           justify-content: center;
 
-          .sub-menu{
+          .indicator-items {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            top: -10px;
+            right: -10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--text-principal-color);
+          }
+          .sub-menu {
             z-index: 100;
             position: absolute;
             display: flex;
@@ -66,31 +79,29 @@
             list-style: none;
             background-color: var(--text-alternative-color);
 
-            li{
-                width: 150px;
-                padding: 5px 20px;
-                transition: background-color 0.3s ease-in-out;
-                a{
-                    font-size: 1rem;
-                    font-weight: 600;
-                    color: #262626ca;
-                }
+            li {
+              width: 150px;
+              padding: 5px 20px;
+              transition: background-color 0.3s ease-in-out;
+              a {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #262626ca;
+              }
             }
-            li:hover{
-                background-color: #b0b0b0;
+            li:hover {
+              background-color: #b0b0b0;
 
-                a{
-                    color: var(--link-hover-secundary-color);
-                }
+              a {
+                color: var(--link-hover-secundary-color);
+              }
             }
-            
           }
-          
         }
         .button:hover {
           cursor: pointer;
 
-          .sub-menu{
+          .sub-menu {
             visibility: visible;
           }
         }

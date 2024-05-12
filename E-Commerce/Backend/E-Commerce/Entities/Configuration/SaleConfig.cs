@@ -16,13 +16,21 @@ namespace Entities.Configuration
 
             builder.HasKey( sale => sale.Id );
 
+            builder.Property( sale => sale.TotalAmount )
+                .HasColumnName( "total_amount" )
+                .HasColumnType( "smallmoney" );
+
+            builder.Property( sale => sale.SaleDate )
+                .HasColumnName( "sale_date" )
+                .HasColumnName( "date" );
+
             builder.HasOne( sale => sale.User )
                 .WithMany( user => user.Sales )
                 .HasForeignKey( sale => sale.UserId );
 
-            builder.HasOne( sale => sale.Seller )
-                .WithMany( seller => seller.Sales )
-                .HasForeignKey( sale => sale.SellerId );
+            //builder.HasOne( sale => sale.Seller )
+            //    .WithMany( seller => seller.Sales )
+            //    .HasForeignKey( sale => sale.SellerId );
         }
     }
 }

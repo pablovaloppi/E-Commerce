@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { CustomService } from './customService';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { UserLogin } from '../models/userLogin';
-import { UserLogued } from '../models/userLogued';
+import { UserLogin } from '../models/user/userLogin';
+import { UserLogued } from '../models/user/userLogued';
 import { Response } from '../models/response';
-import { UserRole } from '../models/userType';
+import { UserRole } from '../models/user/userType';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,7 @@ import { UserRole } from '../models/userType';
 export class LoginService  extends CustomService{
 
     private _isLogin$ = new BehaviorSubject<boolean>(false);
-    
+    private _isAdmin$ = new BehaviorSubject<boolean>(false);
     private _nameLocalStore:string = 'loginInfo';
 
     constructor(private http:HttpClient){
@@ -50,6 +50,9 @@ export class LoginService  extends CustomService{
     getCurrentIdLogued():number | null {
         return this.getCurrentUserLogued() != null ? this.getCurrentUserLogued()!.id : null;
     }
+    getCurrentShopCartId():number | null {
+        return this.getCurrentUserLogued() != null ? this.getCurrentUserLogued()!.shoppingCartId : null;
+    }
     getCurrentUserNamaLogued():string | null{ 
         return this.getCurrentUserLogued() != null ? this.getCurrentUserLogued()!.userName : null;
 
@@ -61,8 +64,11 @@ export class LoginService  extends CustomService{
         return this.getCurrentUserLogued() != null ? this.getCurrentUserLogued()!.token : null;
 
     }
-    
-    isAdmin():boolean{
+    getIsAdmin():Observable<boolean>{
+        return this._isAdmin$.asObservable();
+    }
+
+    private isAdmin():boolean{
         return this.getCurretUserTypeLogued() === UserRole.ADMINISTRATOR;
     }
     isModerator():boolean{
@@ -74,6 +80,7 @@ export class LoginService  extends CustomService{
 
     private setIsLogin(state:boolean){
         this._isLogin$.next(state);
+        this._isAdmin$.next(this.isAdmin());
     }
     private getCurrentUserLogued(): UserLogued | null{
         if(this.localStoreIsEmpty()){

@@ -1,0 +1,22 @@
+<div *ngIf="shopCart" class="cart-checkout-container">
+    
+    <app-item-cart-checkout
+    *ngFor="let item of cartItems"
+    [images]="item.product.images"
+    [title]="item.product.title"
+    [price]="item.totalPrice"
+    ></app-item-cart-checkout>
+
+    <div class="subtotal">
+        <p>Subtotal</p>
+        <p>{{ shopCart.total| currency}}</p>
+    </div>
+    <div *ngIf="shippingPrice > 0" class="shipping-price">
+        <p>Costo del envio</p>
+        <p>{{shippingPrice | currency}}</p>
+    </div>
+    <div class="total">
+        <p>Total</p>
+        <p>{{shopCart.total + shippingPrice | currency}}</p>
+    </div>
+</div>

@@ -203,8 +203,16 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("SellerId")
+                    b.Property<DateTime>("SaleDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("date");
+
+                    b.Property<int?>("SellerId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("smallmoney")
+                        .HasColumnName("total_amount");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -445,19 +453,15 @@ namespace Entities.Migrations
 
             modelBuilder.Entity("Entities.Model.Sale", b =>
                 {
-                    b.HasOne("Entities.Model.Seller", "Seller")
+                    b.HasOne("Entities.Model.Seller", null)
                         .WithMany("Sales")
-                        .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SellerId");
 
                     b.HasOne("Entities.Model.User", "User")
                         .WithMany("Sales")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Seller");
 
                     b.Navigation("User");
                 });

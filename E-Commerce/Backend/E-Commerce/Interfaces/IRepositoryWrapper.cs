@@ -13,6 +13,7 @@ namespace Interfaces
         ICommentRepository Comment { get; }
         IImageRepository Image { get; }
         IProductRepository Product { get; }
+        IProductSaleRepository ProductSale { get; }
         ISaleRepository Sale { get; }
         ISellerRepository Seller { get; }
         IUserRepository User { get; }
@@ -20,5 +21,7 @@ namespace Interfaces
         IShoppingCartRepository ShoppingCart { get; }
         ICartItemRepository CartItem { get; }
         Task SaveAsync();
+        Task SetTransaction();
+        Task CommitTransaction();
     }
 }

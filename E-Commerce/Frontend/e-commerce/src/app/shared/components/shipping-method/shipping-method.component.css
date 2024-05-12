@@ -1,0 +1,147 @@
+.shipping-container {
+  min-width: 100%;
+  display: flex;
+  align-items: flex-start;
+
+  .form-shipping {
+    width: 100%;
+
+    .shipping-selector{
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap:20px;
+
+      .shipping-cards{
+        width: 100px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 5px;
+        border: 1px solid #8080806b;
+        transition: transform 0.3s ease;
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+        
+      }
+      .shipping-cards:hover{
+        cursor: pointer;
+        transform: translateY(-3px);
+      }
+    }
+    .standard-question {
+      width: 100%;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+
+     
+    }
+
+    input[type="radio"]:checked + label {
+        width: 35%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        position: absolute;
+            background: linear-gradient(90deg, rgba(221, 120, 11, 1) 46%, rgba(0, 0, 0, 0.0) 100%);    }
+    
+  
+    
+    .shipping-standard {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 20px;
+
+      div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 50%;
+          padding-left: 10px;
+        }
+      }
+      .street-name {
+        .street {
+          width: 60%;
+        }
+        .number-street {
+          width: 20%;
+        }
+      }
+      .observation {
+        textarea {
+          resize: none;
+          background-color: #efefef;
+          color: var(--text-principal-color);
+          width: 70%;
+        }
+      }
+    }
+    .withdraw-question {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .withdraw {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 70%;
+          padding-left: 10px;
+        }
+      }
+    }
+    .sale-check-question {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .sale-check {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+          width: 70%;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.mat-expansion-panel-header.mat-expanded, .mat-expansion-panel-header:hover {
+ 
+  background: linear-gradient(90deg, var(--text-secundary-color) 46%, rgba(0, 0, 0, 0.0) 100%) !important;    
+}

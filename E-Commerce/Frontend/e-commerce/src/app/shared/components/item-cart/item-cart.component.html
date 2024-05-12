@@ -1,0 +1,20 @@
+<div class="item-cart-container">
+  <div class="image-product">
+    <img src={{imgScr}} alt="" class="image" />
+  </div>
+  <div class="title">
+    <h4>{{title}}</h4>
+    <div class="quantity">
+      <app-quantity-buttons
+        (changeQuantity)="setPrice()"
+        [itemId]="itemPosition"></app-quantity-buttons>
+    </div>
+  </div>
+  <div class="price">
+    <h4>{{totalPrice | currency}}</h4>
+    <span class="trash">
+      <i (click)="onDelete()" class="fa-solid fa-trash-can"></i>
+    </span>
+  </div>
+</div>
+ 

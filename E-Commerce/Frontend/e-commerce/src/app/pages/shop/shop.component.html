@@ -1,0 +1,12 @@
+<div class="shop-container">
+    <ng-container *ngFor="let product of products">
+        <app-product-card 
+            [id]="product.id"
+            [title]="product.title"
+            [price]="product.price"
+            [imageSrc]="product.images"
+            [productId]="product.id"
+        ></app-product-card>
+    </ng-container>
+ 
+</div>

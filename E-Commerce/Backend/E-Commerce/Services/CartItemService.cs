@@ -19,7 +19,7 @@ namespace Services
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public CartItemService( IRepositoryWrapper repository, ILoggerManager logger, IMapper mapper ) :base(logger){
+        public CartItemService( IRepositoryWrapper repository, ILoggerManager logger, IMapper mapper ) : base( logger ) {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
@@ -33,8 +33,12 @@ namespace Services
 
             Validate( result );
 
-            var totalPrice = await CalculateTotalPrice( result );
-            result.TotalPrice = totalPrice;
+            var product = await _repository.Product.GetByIdAsync( cartItem.ProductId );
+
+            IsNull( product, $"No se ha podido obtener el producto con el id: {cartItem.ProductId} administrado por cartItem." );
+
+            result.Quantity = GetQuantityInRange( result.Quantity, product.Amount );
+            result.TotalPrice = CalculateTotalPrice( result.Quantity, product.Price );
 
             _repository.CartItem.CreateItem( result );
 
@@ -56,22 +60,50 @@ namespace Services
             _logger.LogInfo( $"Se ha eliminado el CartItem de id: {itemCart} correctamente." );
 
         }
-        public async Task<IEnumerable<CartItemDto>> GetCartItemsById(int shopCartId ){
-            var cartItems = await _repository.CartItem.getAllByShopCartIdAsync( shopCartId );
 
-            isEmpty( cartItems, "No se ha obtenido ningun CartItem" );
+        public async Task DeleteAllItemCartByShopCartId(IEnumerable<CartItem> cartItems ) {
+            IsNull( cartItems, "No se a pasado ninguna lista de cartItem" );
 
-            _logger.LogInfo( $"Se han obtenido {cartItems.Count()} CartItems. " );
+            _repository.CartItem.DeleteCartItemRange( cartItems );
+            await _repository.SaveAsync();
 
-            return _mapper.Map<IEnumerable<CartItemDto>>(cartItems);
+            _logger.LogInfo( "Se han borrado todos los cartItems" );
+        }
+        public async Task UpdateQuantityCartItem( CartItemCreationDto cartItem ) {
+            if( cartItem.Id is null) {
+                return;
+            }
+
+            var item = await _repository.CartItem.GetCartItemByIdAsync( (Int32)cartItem.Id );
+
+            item.Quantity += cartItem.Quantity;
+
+            _repository.CartItem.UpdateItem( item );
+            await _repository.SaveAsync();
+
+            _logger.LogInfo( $"Se ha actualizado el cartItem de id: {item.Id} correctamente." );
         }
 
-        private async Task<float> CalculateTotalPrice(CartItem cartItem ) {
+        public async Task<bool> ThereIsStock(CartItemCreationDto cartItem, int quantityInShop) {
             var product = await _repository.Product.GetByIdAsync( cartItem.ProductId );
 
-            IsNull( product, $"No se ha podido obtener el producto con el id: {cartItem.ProductId} administrado por cartItem." );
+            return product.Amount >= cartItem.Quantity + quantityInShop;
+        }               
 
-            return cartItem.Quantity * product.Price;
+        public async Task UpdateTotalPriceItems( int shoppinCartId ) {
+            var cartItems = await _repository.CartItem.getAllByShopCartIdAsync( shoppinCartId );
+
+            cartItems.ToList().ForEach( item => item.TotalPrice = CalculateTotalPrice( item.Quantity, item.Product.Price ) );
+            _repository.CartItem.UpdateItemRange( cartItems );
+            await _repository.SaveAsync();
+        }
+
+        private float CalculateTotalPrice(float quantity, float price ) {
+            return quantity * price;
+        }
+
+        private int GetQuantityInRange( int quantity, int amount  ) {
+            return amount > quantity ? quantity : amount;
         }
     }
 }

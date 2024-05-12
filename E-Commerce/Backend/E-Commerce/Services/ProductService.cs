@@ -100,6 +100,17 @@ namespace Services
 
         }
 
+        public async Task UpdateAmountRange(List<int> amountsSales, List<Product> products) {
+            for( int i = 0; i < products.Count(); i++ ) {
+                products[ i ].Amount -= amountsSales[ i ];
+            }
+
+            _repository.Product.UpdateProductRange( products);
+            await _repository.SaveAsync();
+
+            _logger.LogInfo( "Se han actualizado muchos productos." );
+        }
+
         public async Task Delete(int id ) {
             var product = await _repository.Product.GetByIdAsync( id );
 

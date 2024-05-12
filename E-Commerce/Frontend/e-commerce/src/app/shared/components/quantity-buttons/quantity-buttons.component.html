@@ -1,0 +1,7 @@
+<form class="form-quantity-button" [formGroup]="formQuantity">
+    <div class="quantity-buttons">
+        <button [disabled]="isMin" type="button" class="minus-add" (click)="onButtonMinusAdd('SUBSTRACTION')">-</button>
+        <input  class="text-quantity" type="number" min="0" max="5" formControlName="amountSale" [readOnly]="true">
+        <button [disabled]="isMax" type="button" class="minus-add" (click)="onButtonMinusAdd('ADDITION')">+</button>
+    </div>
+</form>  

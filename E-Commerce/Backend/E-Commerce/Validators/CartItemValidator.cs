@@ -16,7 +16,7 @@ namespace Validators
         public override void DefineRules() {
             RuleFor( cartItem => cartItem.Quantity )
                 .NotEmpty().WithMessage( "{PropertyName} no puede ser nulo." )
-                .GreaterThan( MINIMUN_QUANTITY ).WithMessage( "{PropertyName}" + " debe ser mayor a {MINIMUN_QUANTITY}." );
+               .GreaterThanOrEqualTo( MINIMUN_QUANTITY ).WithMessage( "{PropertyName}" + " debe ser mayor a {MINIMUN_QUANTITY}." );
         }
     }
 }

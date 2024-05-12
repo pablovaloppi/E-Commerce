@@ -8,6 +8,7 @@ import { provideAnimations, BrowserAnimationsModule} from '@angular/platform-bro
 import { MenuPrincipalModule } from './shared/components/menu-principal/menu-principal.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,

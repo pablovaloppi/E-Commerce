@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace Interfaces.Repository
 {
-    public  interface ICartItemRepository
+    public interface ICartItemRepository
     {
-        Task<IEnumerable<CartItem>> getAllByShopCartIdAsync( int userId);
+        Task<IEnumerable<CartItem>> getAllByShopCartIdAsync( int userId );
         Task<CartItem> GetCartItemByIdAsync( int cartItemId );
         void CreateItem( CartItem cartItem );
+        void UpdateItem( CartItem cartItem );
+        void UpdateItemRange( IEnumerable<CartItem> cartItems );
         void DeleteCartItem( CartItem cartItem );
+        void DeleteCartItemRange( IEnumerable<CartItem> cartItems );
     }
 }

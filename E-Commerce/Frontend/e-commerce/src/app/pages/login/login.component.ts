@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/core/services/login.service';
-import { UserLogin } from '../../core/models/userLogin';
+import { UserLogin } from '../../core/models/user/userLogin';
 import { Response } from 'src/app/core/models/response';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit{
   constructor( 
     private loginService:LoginService,
     private formBuilder:FormBuilder, 
+    private _shopCartService: CartService,
     private router:Router   
   ) {
 
@@ -37,9 +40,19 @@ export class LoginComponent implements OnInit{
       password: this.loginForm.value['password']
     }
     
-    this.loginService.login(userLogin).subscribe((res:Response) => {
-      this.loginService.setUserLogued(res.data);
-      this.router.navigateByUrl("/home");
+    this.loginService.login(userLogin).pipe(
+      tap(((res:Response) => {
+        this.loginService.setUserLogued(res.data);
+        this.router.navigateByUrl("/home");
+        
+      }))
+    ).subscribe(resp =>{
+      if( resp.data != null){
+        this._shopCartService.getShopCart(resp.data.shoppingCartId).subscribe(response=> {
+          this._shopCartService.setQuantityItem(response.data.cartItems.length);
+          this._shopCartService.setAreItems(response.data.cartItems.length > 0);
+        })
+      }
     })
   }
 }
